@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 
 function App() {
   const [tarefas, setTarefas] = useState(['pagar a conta', 'Estudar react'])
@@ -18,11 +18,13 @@ useEffect(()=> {
 localStorage.setItem('tarefas', JSON.stringify(tarefas));
 }, [tarefas])
 
- function handleAdd (){
+ const handleAdd = useCallback (() => {
 setTarefas([...tarefas, input])
 setInput('');
- }
+ }, [input, tarefas]);
  
+const totalTarefas = useMemo(()=> tarefas.length, [tarefas]);
+
   return ( 
     <div>
 <ul>
@@ -30,7 +32,8 @@ setInput('');
     <li key={tarefa}>{tarefa}</li>
   ))}
 </ul>
-
+<br />
+<strong>Você tem {totalTarefas} tarefas!</strong><br />
 <input type="text" value={input} onChange={e => setInput (e.target.value)} />
 <button type="button" onClick={handleAdd}>Adicionar</button>
  </div>
