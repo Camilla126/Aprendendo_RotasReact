@@ -35,7 +35,7 @@ loadApi();
 <p className="subtitulo">
   {item.subtitulo}
 </p>
-<a href="http" className="botao">Acessar</a>
+<a className="botao">Acessar</a>
     </article>
   )
 })}
