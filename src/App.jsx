@@ -1,41 +1,31 @@
-import React, { useEffect, useMemo, useState, useCallback } from "react";
+import React, {useEffect, useState} from "react";
+import './style.css'
+
+////https://sujeitoprogramador.com/rn-api/?api=posts
 
 function App() {
-  const [tarefas, setTarefas] = useState(['pagar a conta', 'Estudar react'])
- const [input, setInput] = useState('')
  
+const [nutri, setNutri] = useState([])
 
-useEffect(()=>{
-const tarefaStorage = localStorage.getItem('tarefas')
+useEffect(()=> {
 
-if(tarefaStorage){
-  setTarefas(JSON.parse(tarefaStorage));
+function loadApi(){
+  let url = 'https://sujeitoprogramador.com/rn-api/?api=posts';
+  fetch(url)
+  .then((r)=> r.json())
+  .then((json)=> {
+    console.log(json);
+    setNutri(json);
+  })
 }
 
 }, []);
 
-useEffect(()=> {
-localStorage.setItem('tarefas', JSON.stringify(tarefas));
-}, [tarefas])
-
- const handleAdd = useCallback (() => {
-setTarefas([...tarefas, input])
-setInput('');
- }, [input, tarefas]);
- 
-const totalTarefas = useMemo(()=> tarefas.length, [tarefas]);
-
   return ( 
-    <div>
-<ul>
-  {tarefas.map(tarefa => (
-    <li key={tarefa}>{tarefa}</li>
-  ))}
-</ul>
-<br />
-<strong>Você tem {totalTarefas} tarefas!</strong><br />
-<input type="text" value={input} onChange={e => setInput (e.target.value)} />
-<button type="button" onClick={handleAdd}>Adicionar</button>
+    <div className="container">
+<header>
+  <strong>React Nutri</strong>
+</header>
  </div>
  );}
 export default App
