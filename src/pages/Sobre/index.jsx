@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 
 
-function Home() {
+function Sobre() {
  
   return ( 
     <div className="container">
-<h1>Home</h1> <br />
-
-<Link to='/sobre'>Sobre</Link> <br />
+<h1>Sobre</h1> <br />
+<Link to='/'>Página Home</Link> <br />
 <Link to='/contato'>Contato</Link>
  </div>
  );}
-export default Home
+export default Sobre
