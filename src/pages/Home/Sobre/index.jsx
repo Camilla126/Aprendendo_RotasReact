@@ -1,11 +1,11 @@
 import React from "react";
 import './style.css'
 
-function App() {
+function Sobre() {
  
   return ( 
     <div className="container">
-<h1>hello</h1>
+<h1>Sobre</h1>
  </div>
  );}
-export default App
+export default Sobre
