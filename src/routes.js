@@ -5,6 +5,7 @@ import Sobre from "./pages/Sobre";
 import Contato from "./pages/Contato";
 import Header from "./components/Header";
 import Erro from "./pages/Erro";
+import Produto from "./pages/Produto";
 
 function RoutesApp() {
   return (
@@ -14,6 +15,8 @@ function RoutesApp() {
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/Contato" element={<Contato />} />
+        <Route path="/produto/:id" element={<Produto />} />
+
         <Route path="*" element={<Erro />} />
       </Routes>
     </BrowserRouter>
